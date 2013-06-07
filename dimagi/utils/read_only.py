@@ -9,6 +9,9 @@ class ReadOnlyObject(object):
     def __getitem__(self, item):
         return self._obj[item]
 
+    def __contains__(self, item):
+        return item in self._obj
+
     def __getattr__(self, item):
         value = getattr(self._obj, item)
         if isgenerator(value):
